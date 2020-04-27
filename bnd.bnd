@@ -1,0 +1,4 @@
+Bundle-Name: LFRoboticsDemoLogin
+Bundle-SymbolicName: com.liferay.lfrobotics.demologin
+Bundle-Version: 1.0.0
+-sources: true
