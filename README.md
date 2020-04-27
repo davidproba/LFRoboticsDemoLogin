@@ -13,8 +13,10 @@ So, when using this module, after configuring it, you can change your currently 
 * You can add a redirect URL to each user
 
 ### Install
-That should be quite easy, clone/download, build (Liferay Workspace) & deploy.
-Alternatively, just deploy the jar from build/libs.
+You can download and deploy the jar from build/libs.
+Alternatively, you can clone/download this project, build & deploy.
+In this context, consider this module to be created in Liferay Workspace.
+If you do want to extend it, put it in your Liferay Workkspace modules folder.
 
 ### Configure
 For each persona you want to use in your demo, just set the (already existing) user ID, password and optionally a redirect URL.
@@ -36,7 +38,7 @@ Most likely, you will embed this portlet to your theme footer:
 There is actually no CSS behaviour included within this module. For my demo look & feel, I do "design" also this portlet in my theme module.
 What I did for LFRobotics showcase is to resize the avatar image and to apply a color for the buttons:
 ```
-#footer {
+#portlet_com_liferay_lfrobotics_demologin_DemoLoginPortlet_INSTANCE_LFRobotics {
 	.sticker-lg {
 		height:4rem;
 		width:4rem;
