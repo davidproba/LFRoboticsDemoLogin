@@ -1,6 +1,6 @@
 # LFRoboticsDemoLogin
 
-LFRoboticsDemoLogin is a portlet module for Liferay DXP 7.2 I used in my LFRobotics showcase to minimize repetitive logins for demo personas.
+LFRoboticsDemoLogin is a portlet module for Liferay DXP 7.2 I used in my LFRobotics showcase to prevent repetitive logins for demo personas.
 So, when using this module, after configuring it, you can change your currently signed in user by button klick.
 
 ![Demo Login portlet](/img/LFRoboticsDemoLogin.png)
