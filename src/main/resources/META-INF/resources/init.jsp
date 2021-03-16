@@ -24,7 +24,7 @@
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ taglib prefix="liferay-frontend" uri="http://liferay.com/tld/frontend" %>
 
-<%@ page import="com.liferay.portal.kernel.util.StringPool" %>
+<%@ page import="com.liferay.petra.string.StringPool" %>
 <%@ page import="com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration"%>
 <%@ page import="com.liferay.portal.kernel.model.User"%>
 <%@ page import="com.liferay.portal.kernel.service.UserLocalServiceUtil"%>
