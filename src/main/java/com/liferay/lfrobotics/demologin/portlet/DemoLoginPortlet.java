@@ -98,12 +98,12 @@ public class DemoLoginPortlet extends MVCPortlet {
 			if (Validator.isNotNull(demoUsers)) {
 				if (Validator.isNotNull(demoUsers[i]) && demoUsers[i].contains(StringPool.SEMICOLON)) {
 					varUser = StringUtil.split(demoUsers[i], StringPool.SEMICOLON);
-					if (varUser[0] != StringPool.BLANK) {
+					if (varUser[0] != StringPool.BLANK && varUser.length == 3) {
 						try {
-							tmpID = _userLocalService.getUserIdByEmailAddress(companyId, varUser[0]);
+							tmpID = _userLocalService.getUserIdByEmailAddress(companyId, varUser[0].trim());
 							if (tmpID > 0) {
 								User lfuser = _userLocalService.getUser(tmpID);
-								users.add(new Object[] {lfuser, varUser[1], varUser[2]}); 
+								users.add(new Object[] {lfuser, varUser[1].trim(), varUser[2].trim()}); 
 							}
 						} catch (PortalException e) {
 							_log.error(e);
