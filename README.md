@@ -6,12 +6,13 @@ So, when using this module, after configuring it, you can change your currently 
 ![Demo Login portlet](/img/LFRoboticsDemoLogin.png)
 
 ### Features
-* Up to 10 demo personas can be used
+* Unlimited personas can be used (but who wants that?)
 * Displays user name, job title, sign in button and user comments
 * No need for manual logout, current session gets invalidated if already signed in
 * Authentication by Email, ID or screen name based on instance "Authenticate by" setting
 * You can add a redirect URL to each user
-
+* Introduces a gaping security hole, as it transmits clear text passwords to your browser. You have been warned. It's insecure, but sooooooo convenient
+ 
 ### Install
 You can download and deploy the jar from build/libs.
 Alternatively, you can clone/download this project, build & deploy.
@@ -19,20 +20,12 @@ In this context, consider this module to be created in Liferay Workspace.
 If you do want to extend it, put it in your Liferay Workkspace modules folder.
 
 ### Configure
-For each persona you want to use in your demo, just set the (already existing) user ID, password and optionally a redirect URL.
+For each persona you want to use in your demo, just configure their Mail address, Password and a redirect target in Control Panel / System Settings / Third Party / Demo Login Configuration. The three values need to be separated by Semicolon.
+
 ![Demo Login configuration](/img/LFRoboticsDemoLoginConfig.png)
 
 ### Embed in your theme
-Most likely, you will embed this portlet to your theme footer:
-```
-<#assign preferencesLog = freeMarkerPortletPreferences.getPreferences({"portletSetupPortletDecoratorId": "barebone"}) />
-
-<@liferay_portlet["runtime"]
-	defaultPreferences="${preferencesLog}"
-	portletName="com_liferay_lfrobotics_demologin_DemoLoginPortlet"
-	instanceId="LFRobotics"
-	/>
-```
+Contrary to the earlier version, you don't need to embed this in your theme any more. It's now living as a ControlMenuEntry (the little padlock) that opens a popup dialog. Means: You'll need to log in manually for the first user, then can use its comfort
 
 ### Look & feel
 There is actually no CSS behaviour included within this module. For my demo look & feel, I do "design" also this portlet in my theme module.
