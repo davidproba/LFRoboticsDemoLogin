@@ -1,3 +1,4 @@
+<%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
 <%@page import="com.liferay.portal.kernel.service.LayoutLocalServiceUtil"%>
 <%@page import="com.liferay.lfrobotics.demologin.constants.DemoLoginPortletKeys"%>
 <%@page import="com.liferay.portal.kernel.portlet.LiferayWindowState"%>
@@ -14,9 +15,7 @@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
 taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %>
 
 <liferay-frontend:defineObjects />
-
 <liferay-theme:defineObjects />
-
 <portlet:defineObjects />
 
 <%
@@ -26,6 +25,8 @@ modalPortletURL.setWindowState(LiferayWindowState.POP_UP);
 %>
 
 <li class="control-menu-nav-item">
-<a href="javascript:Liferay.Util.openModal({title:'Demo Login', url:'<%=modalPortletURL %>'});" class="control-menu-icon icon-monospaced"><clay:icon symbol="lock-dots"/></a>
+<a href="javascript:Liferay.Util.openModal({title:'<%= LanguageUtil.get(request, resourceBundle, "demo-login-personas") %>', url:'<%=modalPortletURL %>'});" 
+   class="control-menu-icon icon-monospaced lfr-portal-tooltip"
+   data-title="<%= LanguageUtil.get(request, resourceBundle, "demo-login-personas") %>"><clay:icon symbol="lock-dots"/></a>
 </li>
 
