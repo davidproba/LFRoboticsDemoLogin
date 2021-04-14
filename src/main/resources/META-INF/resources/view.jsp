@@ -17,9 +17,10 @@
 --%>
 <%@ include file="init.jsp" %>
 
+<div class="row" style="padding:20px;">
+
 <% if(loginUsers != null && ! loginUsers.isEmpty()) { %>
 
-<div class="row" style="padding:20px;">
 <%
   try {
 	int i = 0;
@@ -68,9 +69,19 @@
 	t.printStackTrace(renderResponse.getWriter());
   }
 %>									
-</div>
+<%  } else if(loggedInRedirect != null && loggedInUser != null){ %>
+	<div class="col-md-4 text-center">
+	</div>
+	<div class="col-md-4 text-center">
+	<h1>Logged in as <%=loggedInUser %></h1>
+	<p>Stand by, you'll be redirected to <a href="<%=loggedInRedirect %>" target="_top"><%=loggedInRedirect %></a> in 3, 2, 1, ...</p>
+	</div>
+	<div class="col-md-4 text-center">
+	</div>
 <%  } else { %>
 	<h1>Demo Login</h1>
 	<p>Please configure available Logins in System Settings / Third Party / Demo Login</p>
 	<p>If you just logged in, stand by. You should be redirected in 3, 2, 1, ...</p>
 <%  }  %>
+
+</div>

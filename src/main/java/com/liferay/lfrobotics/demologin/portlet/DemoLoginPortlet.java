@@ -86,7 +86,7 @@ public class DemoLoginPortlet extends MVCPortlet {
 
 		if(Validator.isNotNull(demoUsers)) {
 			List<Object[]> users = getLoginUsers(themeDisplay.getCompanyId(), demoUsers);
-			renderRequest.setAttribute("users", users);
+			renderRequest.setAttribute("loginUsers", users);
 		}
 	}
 

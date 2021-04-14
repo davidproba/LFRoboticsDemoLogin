@@ -40,5 +40,7 @@
 <portlet:defineObjects />
 
 <%
-	List<Object[]> loginUsers = (List<Object[]>) renderRequest.getAttribute("users");
+	List<Object[]> loginUsers = (List<Object[]>) renderRequest.getAttribute("loginUsers");
+	String loggedInUser = (String)renderRequest.getAttribute("loggedInUser");
+	String loggedInRedirect = (String)renderRequest.getAttribute("loggedInRedirect");
 %>
