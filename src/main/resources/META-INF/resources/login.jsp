@@ -19,20 +19,13 @@ taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %>
 
 <portlet:defineObjects />
 
+<%
+LiferayPortletURL modalPortletURL = PortletURLFactoryUtil.create(request, DemoLoginPortletKeys.DEMOLOGIN, 
+		LayoutLocalServiceUtil.getDefaultPlid(scopeGroupId), PortletRequest.RENDER_PHASE);
+modalPortletURL.setWindowState(LiferayWindowState.POP_UP);
+%>
+
 <li class="control-menu-nav-item">
-<a href="javascript:showDemoLoginModal();" class="control-menu-icon icon-monospaced"><clay:icon symbol="lock-dots"/></a>
+<a href="javascript:Liferay.Util.openModal({title:'Demo Login', url:'<%=modalPortletURL %>'});" class="control-menu-icon icon-monospaced"><clay:icon symbol="lock-dots"/></a>
 </li>
-<script type="text/javascript">
-    showDemoLoginModal = () => {
-		<%
-		LiferayPortletURL modalPortletURL = PortletURLFactoryUtil.create(request, DemoLoginPortletKeys.DEMOLOGIN, 
-				LayoutLocalServiceUtil.getDefaultPlid(scopeGroupId), PortletRequest.RENDER_PHASE);
-		modalPortletURL.setWindowState(LiferayWindowState.POP_UP);
-		%>
-		console.log("opening dialog on plid " + <%=LayoutLocalServiceUtil.getDefaultPlid(scopeGroupId)%> + " for <%=modalPortletURL%>")
-		Liferay.Util.openModal({
-			title: 'Demo Login',
-			url: '<%=modalPortletURL %>',
-		})
-	}
-</script>
+
