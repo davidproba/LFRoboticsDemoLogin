@@ -31,10 +31,10 @@
 		int colspan = Math.max(3, 12/loginUsers.size());  
 		%>
 		<div class="col-md-<%=colspan %> text-center">
-			<span class="sticker sticker-lg">
+			<span class="sticker sticker-xl">
 				<span class="inline-item">
 					<liferay-ui:user-portrait
-						cssClass="sticker-lg"
+						cssClass="sticker-xl"
 						user="<%= loginUser %>"
 					/>
 				</span>
@@ -79,9 +79,14 @@
 	<div class="col-md-4 text-center">
 	</div>
 <%  } else { %>
-	<h1>Demo Login</h1>
-	<p>Please configure available Logins in System Settings / Third Party / Demo Login</p>
-	<p>If you just logged in, stand by. You should be redirected in 3, 2, 1, ...</p>
-<%  }  %>
+	<div class="col-md-4 text-center">
+	</div>
+	<div class="col-md-4 text-center">	<h1>Demo Login</h1>
+	<p>Please configure available Logins in System Settings / Third Party / <a target="_blank" href="/group/control_panel/manage?p_p_id=com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet_factoryPid=com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration&_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet_mvcRenderCommandName=%2Fconfiguration_admin%2Fedit_configuration&_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet_pid=com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration">Demo Login</a></p>
+	<p>Note: This feature is <i>horribly</i> insecure but <i>very</i> convenient. It will cause your UI - and thus the users of this system - to have access to the clear text passwords of all users that you configure to sign in automatically!</p>
+	<p>Use at your own risk - you have been warned.</p>
+	</div>
+	<div class="col-md-4 text-center">
+	</div><%  }  %>
 
 </div>
