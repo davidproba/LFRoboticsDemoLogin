@@ -20,6 +20,7 @@ import com.liferay.lfrobotics.demologin.constants.DemoLoginPortletKeys;
 import com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration;
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.configuration.metatype.bnd.util.ConfigurableUtil;
+import com.liferay.portal.kernel.exception.NoSuchUserException;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -105,10 +106,16 @@ public class DemoLoginPortlet extends MVCPortlet {
 								User lfuser = _userLocalService.getUser(tmpID);
 								users.add(new Object[] {lfuser, varUser[1].trim(), varUser[2].trim()}); 
 							}
+						} catch (NoSuchUserException e) {
+							_log.error("Configured user " + varUser[0] + " not found. Typo?"); 
 						} catch (PortalException e) {
 							_log.error(e);
 						}
+					} else {
+						_log.error("Expected 3 values (\"email;password;redirect\"), separated by semicolon. Found \"" + demoUsers[i] + "\" - ignoring"); 
 					}
+				} else {
+					_log.error("Expected 3 values (\"email;password;redirect\"), separated by semicolon. Found \"" + demoUsers[i] + "\" - ignoring"); 
 				}
 			}
 		}
