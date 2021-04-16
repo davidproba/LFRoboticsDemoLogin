@@ -82,7 +82,12 @@
 	<div class="col-md-4 text-center">
 	</div>
 	<div class="col-md-4 text-center">	<h1>Demo Login</h1>
-	<p>Please configure available Logins in System Settings / Third Party / <a target="_blank" href="/group/control_panel/manage?p_p_id=com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet_factoryPid=com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration&_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet_mvcRenderCommandName=%2Fconfiguration_admin%2Fedit_configuration&_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet_pid=com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration">Demo Login</a></p>
+	<p>Please configure available Logins in System Settings / Third Party / 
+	<a title="this link works in 7.3 FP1, not in GA1 (other versions: unknown)" 
+	   target="_blank" 
+	   href="/group/control_panel/manage?p_p_id=com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet&p_p_lifecycle=0&p_p_state=maximized&p_p_mode=view&_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet_factoryPid=com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration&_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet_mvcRenderCommandName=%2Fconfiguration_admin%2Fedit_configuration&_com_liferay_configuration_admin_web_portlet_SystemSettingsPortlet_pid=com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration"
+	   >Demo Login</a>
+	</p>
 	<p>Note: This feature is <i>horribly</i> insecure but <i>very</i> convenient. It will cause your UI - and thus the users of this system - to have access to the clear text passwords of all users that you configure to sign in automatically!</p>
 	<p>Use at your own risk - you have been warned.</p>
 	</div>
