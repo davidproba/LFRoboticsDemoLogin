@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 --%>
+<%@page import="java.util.Locale"%>
 <%@ include file="init.jsp" %>
 
 <div class="row" style="padding:20px;">
@@ -61,7 +62,9 @@
 				<aui:button type="submit" value="sign-in" target="_parent"/>
 			</aui:form>			
 		<% } %>	
-			<p><%= loginUser.getComments() %></p>	
+			<p><%= loginUser.getComments() %></p>
+			<% Locale userLocale = Locale.forLanguageTag(loginUser.getLanguageId().replace("_", "-"));%>	
+			<p><liferay-ui:message key="language"/>: <%=userLocale.getDisplayName(locale) %></p>	
 		</div>
 <%	}
   }
