@@ -7,6 +7,7 @@
 <%@page import="com.liferay.portal.kernel.portlet.PortletURLFactoryUtil"%>
 <%@page import="com.liferay.portal.kernel.portlet.LiferayPortletURL"%>
 <%@page import="com.liferay.portal.kernel.util.PortalUtil"%>
+<%@page import="com.liferay.portal.kernel.util.HtmlUtil"%>
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 
 <%@ taglib uri="http://liferay.com/tld/clay" prefix="clay" %><%@
@@ -25,8 +26,8 @@ modalPortletURL.setWindowState(LiferayWindowState.POP_UP);
 %>
 
 <li class="control-menu-nav-item">
-<a href="javascript:Liferay.Util.openModal({title:'<%= LanguageUtil.get(request, resourceBundle, "demo-login-personas") %>', url:'<%=modalPortletURL %>'});" 
+<a href="javascript:Liferay.Util.openModal({title:'<%= HtmlUtil.escapeJS(LanguageUtil.format(resourceBundle, "demo-login-personas-you-are-x", user.getFullName())) %>', url:'<%=modalPortletURL %>'});" 
    class="control-menu-icon icon-monospaced lfr-portal-tooltip"
-   data-title="<%= LanguageUtil.get(request, resourceBundle, "demo-login-personas") %>"><clay:icon symbol="lock-dots"/></a>
+   data-title="<%= HtmlUtil.escapeAttribute(LanguageUtil.format(resourceBundle, "demo-login-personas-nl-you-are-x", user.getFullName())) %>"><clay:icon symbol="lock-dots"/></a>
 </li>
 
