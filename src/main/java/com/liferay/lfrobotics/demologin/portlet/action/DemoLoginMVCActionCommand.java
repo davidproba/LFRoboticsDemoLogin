@@ -59,9 +59,9 @@ public class DemoLoginMVCActionCommand extends BaseMVCActionCommand {
 		if (authType.equals(CompanyConstants.AUTH_TYPE_EA)) {
 			login = uMail;
 		} else if (authType.equals(CompanyConstants.AUTH_TYPE_SN)) {
-			login = uID;
-		} else if (authType.equals(CompanyConstants.AUTH_TYPE_ID)) {
 			login = uSN;
+		} else if (authType.equals(CompanyConstants.AUTH_TYPE_ID)) {
+			login = uID;
 		}		
 		try {
 			AuthenticatedSessionManagerUtil.login(request, response, login, password, false, authType);
