@@ -1,10 +1,15 @@
 package com.liferay.lfrobotics.demologin.portlet.action;
 
 import com.liferay.lfrobotics.demologin.constants.DemoLoginPortletKeys;
+import com.liferay.lfrobotics.demologin.portlet.DemoLoginPortlet;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.CompanyConstants;
+import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.portlet.bridges.mvc.BaseMVCActionCommand;
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCActionCommand;
 import com.liferay.portal.kernel.security.auth.session.AuthenticatedSessionManagerUtil;
+import com.liferay.portal.kernel.service.UserLocalService;
 import com.liferay.portal.kernel.theme.ThemeDisplay;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
@@ -18,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 @Component(
 		property = {
@@ -31,7 +37,6 @@ public class DemoLoginMVCActionCommand extends BaseMVCActionCommand {
 
 	@Override
 	protected void doProcessAction(ActionRequest actionRequest, ActionResponse actionResponse) throws Exception {
-		// TODO Auto-generated method stub
 		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
 				WebKeys.THEME_DISPLAY);
 		HttpServletRequest request = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(actionRequest));
@@ -65,10 +70,20 @@ public class DemoLoginMVCActionCommand extends BaseMVCActionCommand {
 		}		
 		try {
 			AuthenticatedSessionManagerUtil.login(request, response, login, password, false, authType);
-			actionResponse.sendRedirect(redirect);
+			actionRequest.setAttribute("loggedInUser", login);
+			actionRequest.setAttribute("loggedInRedirect", redirect);
+			User loggedInUser = _userLocalService.getUserByEmailAddress(themeDisplay.getCompanyId(), login);
+			if(loggedInUser != null) {
+				actionRequest.setAttribute("loggedInUser", loggedInUser.getFullName());
+			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			_log.error("Error logging in " + login + " - " + uMail + " " + uID + " " + uSN);
 		}
 	}
+	
+	private static final Log _log = LogFactoryUtil.getLog(DemoLoginPortlet.class);
+	
+	@Reference
+	private UserLocalService _userLocalService;
 
 }

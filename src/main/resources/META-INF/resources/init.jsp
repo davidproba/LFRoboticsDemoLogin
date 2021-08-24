@@ -24,14 +24,15 @@
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ taglib prefix="liferay-frontend" uri="http://liferay.com/tld/frontend" %>
 
-<%@ page import="com.liferay.portal.kernel.util.StringPool" %>
 <%@ page import="com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration"%>
+<%@ page import="com.liferay.petra.string.StringPool"%>
 <%@ page import="com.liferay.portal.kernel.model.User"%>
 <%@ page import="com.liferay.portal.kernel.service.UserLocalServiceUtil"%>
 <%@ page import="com.liferay.portal.kernel.util.StringUtil"%>
 <%@ page import="com.liferay.portal.kernel.util.Validator"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.liferay.portal.kernel.util.Constants" %>
+<%@ page import="com.liferay.portal.kernel.util.HtmlUtil"%>
 
 
 <liferay-theme:defineObjects />
@@ -39,13 +40,7 @@
 <portlet:defineObjects />
 
 <%
-	DemoLoginConfiguration demoLoginConfiguration =
-		(DemoLoginConfiguration)
-		renderRequest.getAttribute(DemoLoginConfiguration.class.getName());
-
-	String[] demoUsers = new String[10];
-	
-	if (!(demoLoginConfiguration == null)) {
-		demoUsers = portletPreferences.getValues("demoUsers", demoLoginConfiguration.demoUsers());
-	}
+	List<Object[]> loginUsers = (List<Object[]>) renderRequest.getAttribute("loginUsers");
+	String loggedInUser = (String)renderRequest.getAttribute("loggedInUser");
+	String loggedInRedirect = (String)renderRequest.getAttribute("loggedInRedirect");
 %>

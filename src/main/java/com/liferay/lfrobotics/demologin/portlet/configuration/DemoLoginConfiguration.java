@@ -19,13 +19,26 @@ package com.liferay.lfrobotics.demologin.portlet.configuration;
 import aQute.bnd.annotation.metatype.Meta;
 
 /**
- * @author Liferay
+ * @author David Proba, Olaf Kock
  */
+
 @Meta.OCD(
-	id = "com.liferay.lfrobotics.demologin.portlet.DemoLoginConfiguration"
+	id = "com.liferay.lfrobotics.demologin.portlet.configuration.DemoLoginConfiguration"
+    , localization = "content/Language"
+    , name = "demo-login-configuration-name"
+    , description = "demo-login-configuration-description"
 )
 public interface DemoLoginConfiguration {
 
-	@Meta.AD(required = false)
+	@Meta.AD(
+            deflt = "",
+			description = "demo-login-configuration-demousers-description",
+            name = "demo-login-configuration-demousers-name",
+            required = false
+        )
 	public String[] demoUsers();
 }
+
+
+
+
